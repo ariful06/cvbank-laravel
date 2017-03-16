@@ -56,8 +56,8 @@ class FactController extends Controller
             Fact::create($data);
 
             Session::flash('message-success','Facts Successfully Added');
-            return redirect('/dashboard/fact/create');
-            return back()->withInput();
+            return redirect('/dashboard/fact/');
+            // return back()->withInput();
 
 
         }else{

@@ -61,6 +61,7 @@ Route::post('/dashboard/experience/{id}/delete', 'ExperienceController@destroy')
 
 
 
+
 /*
 ==============================================
 For authentication purpose + Registration
@@ -112,12 +113,49 @@ Route::get('/dashboard/Hobbie/pdelete/{id}/', 'HobbiesController@PermanentDelete
 Route::get('/dashboard/Hobbie/restore/{id}', 'HobbiesController@restore');
 
 
+/*================================
+Award
+================================*/
+Route::get('/dashboard/award/', 'AwardController@index');
+Route::get('/dashboard/award/create', 'AwardController@create');
+Route::post('/dashboard/award/store', 'AwardController@store');
+
+Route::get('/dashboard/award/{id}/edit', 'AwardController@edit');
+Route::post('/dashboard/award/{id}/update', 'AwardController@update');
+
+Route::get('/dashboard/award/{id}/delete/', 'AwardController@SoftDelete');
+Route::get('/dashboard/award/{id}/pdelete/', 'AwardController@PermanentDelete');
+
+Route::get('/dashboard/award/{id}/restore/', 'AwardController@restore');
+Route::get('/dashboard/award/deleted', 'AwardController@indexDelete');
+
+
+
+
 /*======================================
 About
 ======================================*/
 Route::get('/dashboard/about', 'AboutController@index');
 Route::get('/dashboard/about/edit', 'AboutController@edit');
 Route::post('/dashboard/about/update', 'AboutController@update');
+
+
+/*Ajax upload*/
+Route::get('/ajaxform', function()
+{
+	return view('ajax');
+});
+Route::get('/ajaxupload', 'AjaxHandeller@test');
+Route::post('/ajaxupload', 'AjaxHandeller@test');
+
+
+/*=====================================
+Education
+=====================================*/
+
+Route::resource('/dashboard/education', 'EducationController' );
+
+
 
 
 

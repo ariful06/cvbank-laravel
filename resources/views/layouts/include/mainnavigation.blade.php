@@ -36,27 +36,28 @@
 
                 </ul>
             </li>
-            <li>
+
+            <li class="@yield('resume-select')">
                 <a href="#"><i class="icon-reminder"></i> <span>Resume</span></a>
                 <ul>
-                    <li><a href="#"><i class="icon-book"></i>Education</a>
+                    <li class="@yield('education-select')"><a href="#"><i class="icon-book"></i>Education</a>
                         <ul>
-                            <li><a href="{{url('/education/view')}}">View</a></li>
-                            <li><a href="{{url('/education/view')}}">Add</a></li>
+                            <li><a href="{{url('/dashboard/education/')}}">View</a></li>
+                            <li><a href="{{url('/dashboard/education/create')}}">Add</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="icon-cup2"></i>Awards</a>
+                    <li class="@yield('award-select')"><a href="#"><i class="icon-cup2"></i>Award</a>
                         <ul>
-                            <li><a href="{{url('/awards/view')}}">View</a></li>
-                            <li><a href="{{url('/awards/add')}}">Add</a></li>
+                            <li><a href="{{url('/dashboard/award/')}}">View</a></li>
+                            <li><a href="{{url('/dashboard/award/create')}}">Add</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="icon-cup2"></i>Experience</a>
+                    <li class="@yield('experience-select')"><a href="#"><i class="icon-cup2"></i>Experience</a>
                         <ul>
                             <li><a href="{{url('/dashboard/experience/')}}">View</a></li>
 
 
-                            <li><a href="{{url('/dashboard/experience/add')}}">Add</a></li>
+                            <li><a href="{{url('/dashboard/experience/create')}}">Add</a></li>
                         </ul>
                     </li>
                 </ul>
