@@ -33,6 +33,8 @@
 @include('layouts.include.sessionmessage')
 
 
+
+@if(count($allAwards) > 0)
 @foreach($allAwards as $data)
 
 <div class="col-md-6">
@@ -44,7 +46,11 @@
 	        		<li><a href="#" class="text-muted" data-toggle="modal" data-target="#modal_theme_danger{{$data->id}}"><i class="icon-cross pull-right"></i></a></li>
 	        	</ul>
 	    	</div>
-		<a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
+			<a class="heading-elements-toggle"><i class="icon-menu"></i></a>
+		</div>
+
+
+
 
 		<div class="panel-body">
 			<form>
@@ -79,8 +85,9 @@
 					</div>
 
 
-					<a class="btn btn-primary" href="/dashboard/award/{{$data->id}}/restore">Restore <i class=" icon-plus-circle2 position-right"></i></a>
+					<a class="btn btn-primary" href="/dashboard/award/{{$data->id}}/restore"><i class="icon-add-to-list position-right"></i> Restore Item</a>
 
+					
 					
 
 			</form>
@@ -89,8 +96,15 @@
 	</div>
 </div>
 @endforeach
+@else
+<p>No Item found</p>
+@endif
+
+
+
 
 @foreach($allAwards as $data)
+
 
 <div id="modal_theme_danger{{$data->id}}" class="modal fade">
     <div class="modal-dialog">
@@ -118,7 +132,6 @@
         </div>
     </div>
 </div>
-
 
 
 @endforeach

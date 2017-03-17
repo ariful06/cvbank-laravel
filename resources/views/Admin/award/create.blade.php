@@ -42,7 +42,7 @@
 			@include('layouts.include.errors')
 			@include('layouts.include.sessionmessage')
 
-				{{Form::open(['url' => '/dashboard/award/store'  ])}}
+				{{Form::open(['url' => '/dashboard/award'  ])}}
 				
 				<div class="form-group">
 					<label for="title">Tilte</label>

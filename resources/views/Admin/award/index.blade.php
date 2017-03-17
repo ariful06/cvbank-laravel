@@ -32,7 +32,7 @@
 @include('layouts.include.errors')
 @include('layouts.include.sessionmessage')
 
-
+@if(count($allAwards) > 0)
 @foreach($allAwards as $data)
 
 <div class="col-md-6">
@@ -88,6 +88,10 @@
 	</div>
 </div>
 @endforeach
+@else
+<p>No Item found</p>
+@endif
+
 
 @foreach($allAwards as $data)
 
@@ -96,23 +100,26 @@
         <div class="modal-content">
             <div class="modal-header bg-danger">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h6 class="modal-title">Delete hobbies</h6>
+                <h6 class="modal-title">Delete Item</h6>
             </div>
 
             <div class="modal-body">
-                <h6 class="text-semibold">Delete hobbies</h6>
-                <p>Are you sure want to delte this hobbies Which tile is <b>{{$data->title}} </b></p>
+                <h6 class="text-semibold">Delete</h6>
+                <p>Are you sure want to Delete item Which title is <b>{{$data->title}} </b></p>
 
                 <hr>
 
-                
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
 
-                <!-- <button type="button" class="btn btn-danger">Save changes</button> -->
-                <a href="/dashboard/award/{{$data->id}}/delete/" class="btn btn-danger">Yes Delete</a>
+                {{Form::open(['url' => "/dashboard/award/$data->id" ])}}
+					{{ method_field('DELETE') }}
+					
+					<input type="submit" class="btn btn-danger" value="Yes Delete">
+
+
+                {{ Form::close() }}
             </div>
         </div>
     </div>

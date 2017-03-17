@@ -42,7 +42,9 @@
 			@include('layouts.include.errors')
 			@include('layouts.include.sessionmessage')
 
-				{{Form::open(['url' => "/dashboard/award/$data->id/update/" ])}}
+				{{Form::open(['url' => "/dashboard/award/$data->id" ])}}
+
+				{{ method_field('PATCH') }}
 				
 				<div class="form-group">
 					<label for="title">Tilte</label>

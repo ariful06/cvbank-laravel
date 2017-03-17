@@ -54,6 +54,11 @@ class AwardController extends Controller
                 ['user_id', '=', Auth::id() ],
             ])->first();
 
+
+        if($data == null){ 
+        	return back()->withInput();
+        }
+
         return view('Admin.award.edit', compact('data'));
         // return view('')
     }
@@ -88,13 +93,22 @@ class AwardController extends Controller
     	
     }
 
-    public function SoftDelete($id)
+    //SOFT DELETE
+    public function destroy($id)
     {
-        
+
+
         $data = Award::where([
             ['id', '=', $id],
             ['user_id', '=', Auth::id() ],
             ])->first();
+
+        //Check if item have any data
+        if($data == null){ 
+        	return back()->withInput();
+        }
+
+
         if ($data->delete()) {
             Session::flash('message-success','Facts Delete Success');
             return back()->withInput();
@@ -105,6 +119,7 @@ class AwardController extends Controller
         }
     }
 
+    //Parmanent Delete
     public function PermanentDelete($id)
     {
         
@@ -112,6 +127,12 @@ class AwardController extends Controller
             ['id', '=', $id],
             ['user_id', '=', Auth::id() ],
             ])->first();
+
+        //Check if item have any data
+        if($data == null){ 
+        	return back()->withInput();
+        }
+
 
         if($data->forceDelete()){
             Session::flash('message-success','Item Permanent Deleted');
@@ -129,21 +150,29 @@ class AwardController extends Controller
             ['user_id', '=', Auth::id() ],
             ])->first();
 
+        //Check if item have any data
+        if($data == null){ 
+        	return back()->withInput();
+        }
+
+
         if($data->restore()){
             Session::flash('message-success','Restore Successfully done');
-            return back()->withInput();
+            // return back()->withInput();
+            return redirect('/dashboard/award/deleted');
         }else{
             Session::flash('message-error','Restore Failed');
-            return back()->withInput();            
+            return redirect('/dashboard/award/deleted');
+
+            // return back()->withInput();            
         }
     }
 
 
     public function indexDelete()
     {
-        // echo "string";
-        // die();
-        $data = Award::onlyTrashed()->where('user_id', Auth::id() )->get();;
+        
+        $data = Award::onlyTrashed()->where('user_id', Auth::id() )->get();
         
         return view('Admin.award.indexDelete', ['allAwards' => $data ]);
     }

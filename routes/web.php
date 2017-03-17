@@ -116,19 +116,14 @@ Route::get('/dashboard/Hobbie/restore/{id}', 'HobbiesController@restore');
 /*================================
 Award
 ================================*/
-Route::get('/dashboard/award/', 'AwardController@index');
-Route::get('/dashboard/award/create', 'AwardController@create');
-Route::post('/dashboard/award/store', 'AwardController@store');
-
-Route::get('/dashboard/award/{id}/edit', 'AwardController@edit');
-Route::post('/dashboard/award/{id}/update', 'AwardController@update');
-
-Route::get('/dashboard/award/{id}/delete/', 'AwardController@SoftDelete');
-Route::get('/dashboard/award/{id}/pdelete/', 'AwardController@PermanentDelete');
 
 Route::get('/dashboard/award/{id}/restore/', 'AwardController@restore');
 Route::get('/dashboard/award/deleted', 'AwardController@indexDelete');
+Route::get('/dashboard/award/{id}/delete/', 'AwardController@SoftDelete');
+Route::get('/dashboard/award/{id}/pdelete/', 'AwardController@PermanentDelete');
 
+
+Route::resource('/dashboard/award', 'AwardController');
 
 
 
@@ -143,7 +138,7 @@ Route::post('/dashboard/about/update', 'AboutController@update');
 /*Ajax upload*/
 Route::get('/ajaxform', function()
 {
-	return view('ajax');
+	return view( 'ajax' );
 });
 Route::get('/ajaxupload', 'AjaxHandeller@test');
 Route::post('/ajaxupload', 'AjaxHandeller@test');
@@ -152,7 +147,6 @@ Route::post('/ajaxupload', 'AjaxHandeller@test');
 /*=====================================
 Education
 =====================================*/
-
 Route::resource('/dashboard/education', 'EducationController' );
 
 
@@ -163,44 +157,13 @@ Route::resource('/dashboard/education', 'EducationController' );
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
 
-Route::get('/404', function ()
-{
+
+
+Route::get('/404', function (){
 	return view('404');
 });
-
-
-
-
-
-
-
-
-
-
-
 
