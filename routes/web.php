@@ -32,18 +32,38 @@ Route::get('/user', function ()
 });
 
 
-Route::get('/dashboard/experience/add', 'ExperienceController@create');
-
-Route::post('/dashboard/experience/store', 'ExperienceController@store');
-
-Route::get('/dashboard/experience/index', 'ExperienceController@index');
-Route::get('/dashboard/experience/{id}/edit', 'ExperienceController@edit');
-Route::get('/dashboard/experience/{id}/details', 'ExperienceController@show');
-
-Route::post('/dashboard/experience/{id}/update', 'ExperienceController@update');
-Route::post('/dashboard/experience/{id}/delete', 'ExperienceController@destroy');
 
 
+
+
+
+
+
+
+
+/*================================
+Experience
+================================*/
+
+
+// Route::get('/dashboard/experience/add', 'ExperienceController@create');
+
+// Route::post('/dashboard/experience/store', 'ExperienceController@store');
+
+// Route::get('/dashboard/experience/index', 'ExperienceController@index');
+// Route::get('/dashboard/experience/{id}/edit', 'ExperienceController@edit');
+// Route::get('/dashboard/experience/{id}/details', 'ExperienceController@show');
+
+// Route::post('/dashboard/experience/{id}/update', 'ExperienceController@update');
+// Route::post('/dashboard/experience/{id}/delete', 'ExperienceController@destroy');
+
+
+Route::get('/dashboard/experience/deleted', 'ExperienceController@indexDelete');
+Route::get('/dashboard/experience/{id}/restore/', 'ExperienceController@restore');
+Route::get('/dashboard/experience/{id}/pdelete/', 'ExperienceController@PermanentDelete');
+
+
+Route::resource('/dashboard/experience', 'ExperienceController');
 
 
 

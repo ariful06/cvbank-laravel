@@ -1,7 +1,7 @@
 @extends('Admin.master')
 
 @section('title', 'Experience')
-@section('sub-title','Add Experience Information')
+@section('sub-title','Trashed Experience')
 @section('resume-select', 'active')
 @section('experience-select', 'active')
 
@@ -79,8 +79,10 @@
 
 
 					<div style="text-align: center;" class="form-group">
-					<a style="text-align: center;" href="/dashboard/experience/{{$data->id}}/edit" class="btn btn-primary"><i class=" icon-pencil7"></i> Edit information</a>
-				</div>
+
+					
+						<a class="btn btn-primary" href="/dashboard/experience/{{$data->id}}/restore"><i class="icon-add-to-list position-right"></i> Restore Item</a>
+					</div>
 
 			</form>
 			
@@ -95,34 +97,34 @@
 
 @foreach($allExperiences as $data)
 
+
+
 <div id="modal_theme_danger{{$data->id}}" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger">
                 <button type="button" class="close" data-dismiss="modal">×</button>
-                <h6 class="modal-title">Delete Item</h6>
+                <h6 class="modal-title">Delete</h6>
             </div>
 
             <div class="modal-body">
-                <h6 class="text-semibold">Delete</h6>
-                <p>Are you sure want to Delete item Which title is <b>{{$data->title}} </b></p>
+                <h6 class="text-semibold">Delete Information</h6>
+                <p>Are you sure want to Parmanent delete item Which Title is <b>{{$data->title}} </b></p>
 
                 <hr>
 
+                
             </div>
 
             <div class="modal-footer">
+                <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
 
-                {{Form::open(['url' => "/dashboard/experience/$data->id" ])}}
-					{{ method_field('DELETE') }}
-					
-					<input type="submit" class="btn btn-danger" value="Yes Delete">
-
-                {{ Form::close() }}
+                <a href="/dashboard/experience/{{$data->id}}/pdelete/" class="btn btn-danger">Yes Delete</a>
             </div>
         </div>
     </div>
 </div>
+
 
 
 

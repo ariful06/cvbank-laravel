@@ -1,77 +1,99 @@
 @extends('Admin.master')
 
-@section('sub-title', 'Update Experience')
+
+@section('title', 'Education')
+@section('sub-title','Add Award Info')
+@section('resume-select', 'active')
+@section('experience-select', 'active')
+
+
+@section('right-side-icon')
+<li class="dropdown">
+  <a href="/dashboard/experience/deleted">
+    <i class="icon-trash-alt position-left"></i>
+    Trashed Item
+  </a>
+</li>
+@endsection
+
+
+
+@section('in-head')
+
+
+<script type="text/javascript">
+
+</script>
+@endsection
+
 
 
 @section('content')
 
+
+
+
+  <div class="col-md-offset-3 col-md-6"> 
     <div class="panel panel-flat">
+      <div class="panel-heading">
+        <h6 class="panel-title" style="text-align: center;">Edit Award info</h6>
+      </div>
+      
+      <div class="panel-body">
 
-        <div class="panel-heading">
-            <h6 class="panel-title">Update Your Experience</h6>
+      @include('layouts.include.errors')
+      @include('layouts.include.sessionmessage')
+
+        {{Form::open(['url' => "/dashboard/experience/$data->id" ])}}
+
+        {{ method_field('PATCH') }}
+        
+          <div class="form-group">
+            <label for="institute">Designation Name</label>
+            <input type="text" name="designation" class="form-control" value="{{$data->designation}}" required>
+          </div>
+          
+
+          <div class="form-group">
+            <label for="company_name">Company Name</label>
+            <input type="text" name="company_name" class="form-control" value="{{$data->company_name}}" required>
+          </div>
+
+            
+          <div class="form-group">
+            <label for="start_date">Start Date</label>
+            <input type="date" name="start_date" class="form-control" value="{{$data->start_date}}" required>
+          </div>
+
+          <div class="form-group">
+            <label for="end_date">End Date</label>
+            <input type="date" name="end_date" class="form-control" value="{{$data->end_date}}" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="company_location">Company Location</label>
+            <input type="text" name="company_location" class="form-control" value="{{$data->company_location}}" required>
+          </div>
+
+
+
+        <div class="form-group" style="text-align: center;">
+          <button type="submit" class="btn btn-danger">Update Information <i class="icon-spinner9 position-right"></i></button>
         </div>
 
-        <div class="panel-body">
-
-            <div class="col-md-offset-3 col-md-6">
 
 
 
-                {!! Form::model($data,['url' => '/dashboard/experience/'.$data['id'].'/update', 'class' =>'form-horizontal'   ]) !!}
+        {{Form::close()}}
 
-
-                <div class="form-group">
-                    {!! Form::label('Designation') !!}
-                    {!! Form::text('designation', null,
-                        array('required',
-                              'class'=>'form-control',
-                              'placeholder'=>'Your Position')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('Company Name') !!}
-                    {!! Form::text('company_name', null,
-                        array('required',
-                              'class'=>'form-control',
-                              'placeholder'=>'Your Company name')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('Start Date') !!}
-                    {!! Form::date('start_date', null,
-                        array('required',
-                              'class'=>'form-control',
-                              'placeholder'=>'Your Company name')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('End Date') !!}
-                    {!! Form::text('end_date', null,
-                        array('required',
-                              'class'=>'form-control',
-                              'placeholder'=>'leave blank if running')) !!}
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('Company Location') !!}
-                    {!! Form::text('company_location', null,
-                        array('required',
-                              'class'=>'form-control',
-                              'placeholder'=>'example: NY, USA')) !!}
-                </div>
-
-
-
-
-
-                <div class="form-group">
-                    {!! Form::submit('Update Experience',
-                      array('class'=>'btn btn-primary')) !!}
-                </div>
-                {!! Form::close() !!}
-
-            </div>
-
-        </div>
+      </div>
     </div>
+  </div>
+
+
+
+
+
+
 @endsection
