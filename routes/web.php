@@ -45,19 +45,6 @@ Route::get('/user', function ()
 Experience
 ================================*/
 
-
-// Route::get('/dashboard/experience/add', 'ExperienceController@create');
-
-// Route::post('/dashboard/experience/store', 'ExperienceController@store');
-
-// Route::get('/dashboard/experience/index', 'ExperienceController@index');
-// Route::get('/dashboard/experience/{id}/edit', 'ExperienceController@edit');
-// Route::get('/dashboard/experience/{id}/details', 'ExperienceController@show');
-
-// Route::post('/dashboard/experience/{id}/update', 'ExperienceController@update');
-// Route::post('/dashboard/experience/{id}/delete', 'ExperienceController@destroy');
-
-
 Route::get('/dashboard/experience/deleted', 'ExperienceController@indexDelete');
 Route::get('/dashboard/experience/{id}/restore/', 'ExperienceController@restore');
 Route::get('/dashboard/experience/{id}/pdelete/', 'ExperienceController@PermanentDelete');
@@ -67,11 +54,26 @@ Route::resource('/dashboard/experience', 'ExperienceController');
 
 
 
+/*================================
+Posts
+================================*/
+
+Route::get('/dashboard/post/deleted', 'PostController@indexDelete');
+Route::get('/dashboard/post/{id}/restore/', 'PostController@restore');
+Route::get('/dashboard/post/{id}/pdelete/', 'PostController@PermanentDelete');
+
+Route::resource('/dashboard/post', 'PostController');
 
 
+/*=====================================
+Education
+=====================================*/
 
+Route::get('/dashboard/education/deleted', 'EducationController@indexDelete');
+Route::get('/dashboard/education/{id}/restore/', 'EducationController@restore');
+Route::get('/dashboard/education/{id}/pdelete/', 'EducationController@PermanentDelete');
 
-
+Route::resource('/dashboard/education', 'EducationController' );
 
 
 
@@ -139,9 +141,7 @@ Award
 
 Route::get('/dashboard/award/{id}/restore/', 'AwardController@restore');
 Route::get('/dashboard/award/deleted', 'AwardController@indexDelete');
-Route::get('/dashboard/award/{id}/delete/', 'AwardController@SoftDelete');
 Route::get('/dashboard/award/{id}/pdelete/', 'AwardController@PermanentDelete');
-
 
 Route::resource('/dashboard/award', 'AwardController');
 
@@ -164,10 +164,7 @@ Route::get('/ajaxupload', 'AjaxHandeller@test');
 Route::post('/ajaxupload', 'AjaxHandeller@test');
 
 
-/*=====================================
-Education
-=====================================*/
-Route::resource('/dashboard/education', 'EducationController' );
+
 
 
 

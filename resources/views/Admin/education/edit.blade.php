@@ -31,6 +31,8 @@
 
 
 <div class="col-md-12">
+<div class="col-md-6 col-md-offset-3">
+
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h5 class="panel-title">Update: {{$data->title}}</h5>
@@ -38,6 +40,8 @@
 		<a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
 		
 		<div class="panel-body">
+
+
 		@include('layouts.include.errors')
 		@include('layouts.include.sessionmessage')
 
@@ -55,6 +59,7 @@
 					<label for="title">Education Tilte</label>
 					<input type="text" name="title" class="form-control" value="{{$data->title}}" required>
 				</div>
+
 				<div class="form-group">
 					<label for="institute">Institute Name</label>
 					<input type="text" name="institute" class="form-control" value="{{$data->institute}}" required>
@@ -97,6 +102,8 @@
 
 
 			{{Form::close()}}
+
+		</div>			
 		</div>
 	</div>
 </div>

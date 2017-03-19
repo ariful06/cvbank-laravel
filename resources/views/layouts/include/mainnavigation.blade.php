@@ -62,20 +62,24 @@
                     </li>
                 </ul>
             </li>
-            <li>
+
+
+            <li class="@yield('post-select')">
                 <a href="#"><i class="icon-paragraph-center2"></i> <span>Post</span></a>
                 <ul>
-                    <li><a href="#">View</a></li>
-                    <li><a href="{{url('/post/add')}}">Add New</a></li>
+                    <li><a href="{{url('dashboard/post/')}}">View</a></li>
+                    <li><a href="{{url('dashboard/post/create')}}">Add New</a></li>
                 </ul>
             </li>
-            <li><a href="#"><i class="icon-search4"></i>Services</a>
+
+            <li class="@yield('service-select')"><a href="#"><i class="icon-search4"></i>Services</a>
                 <ul>
                     <li><a href="{{url('/services/view')}}">View</a></li>
                     <li><a href="{{url('/services/add')}}">Add New</a></li>
 
                 </ul>
             </li>
+            
             <!-- /main -->
 
             <!-- Forms -->

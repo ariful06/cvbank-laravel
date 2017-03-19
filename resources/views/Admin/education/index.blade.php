@@ -38,8 +38,6 @@
             		
             		<a href="#" class="text-muted" data-toggle="modal" data-target="#modal_theme_danger{{$data->id}}"><i class="icon-cross pull-right"></i></a>
 
-            		<a href="/dashboard/education/{{$data->id}}/edit" class="text-muted"><i class="icon-pencil7 pull-right"></i></a>
-
             	</ul>
         	</div>
 		<a class="heading-elements-toggle"><i class="icon-menu"></i></a></div>
@@ -89,14 +87,6 @@
 				</div>
 
 
-		
-
-
-			
-
-
-
-
 			</form>
 		</div>
 	</div>
@@ -108,33 +98,36 @@
 
 
 @foreach($allEducation as $data)
-    <div id="modal_theme_danger{{$data->id}}" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h6 class="modal-title">Delete Education Record</h6>
-                </div>
+    
+<div id="modal_theme_danger{{$data->id}}" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h6 class="modal-title">Delete Item</h6>
+            </div>
 
-                <div class="modal-body">
-                    <h6 class="text-semibold">Delete Fact</h6>
-                    <p>Are you sure want to delte this Education Which tile is <b>{{$data->title}} </b></p>
-                    <hr>
+            <div class="modal-body">
+                <h6 class="text-semibold">Delete</h6>
+                <p>Are you sure want to Delete item Which title is <b>{{$data->title}} </b></p>
 
-                    
-                </div>
+                <hr>
 
-                <div class="modal-footer">
- 
-                    {{Form::open(['url' =>  "/dashboard/education/"  ])}}
-                    	{{ method_field('DELETE') }}
-						<input type="submit" class="btn btn-danger" value="Delete">
-                    {{Form::close()}}
-                    
-                </div>
+            </div>
+
+            <div class="modal-footer">
+
+                {{Form::open(['url' => "/dashboard/education/$data->id" ])}}
+					{{ method_field('DELETE') }}
+					
+					<input type="submit" class="btn btn-danger" value="Yes Delete">
+
+                {{ Form::close() }}
             </div>
         </div>
     </div>
+</div>
+
 @endforeach
 
 
